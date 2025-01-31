@@ -18,43 +18,28 @@
 export default {
   data() {
     return {
-      category: this.$route.params.category, // Access the category from route params
-      images: [], // This will hold the image objects
+      category: this.$route.params.category,
+      images: [],
     };
   },
   created() {
-    console.log("GalleryPage created");
-    console.log("Category:", this.category); // Log the category
     this.loadImages();
   },
   methods: {
     loadImages() {
-      // Define categories and their corresponding images
       const allImages = {
-        'my-love': Array.from({ length: 11 }, (_, i) => `${i + 1}.jpg`), // Images 1 to 15
-        'my-heart': Array.from({ length: 11 }, (_, i) => `${i + 16}.jpg`), // Images 16 to 30
-        'my-joy': Array.from({ length: 11 }, (_, i) => `${i + 31}.jpg`), // Images 31 to 45
-        'my-wife': Array.from({ length: 12 }, (_, i) => `${i + 16}.jpg`), // Different images for my-wife
+        'my-love': Array.from({ length: 11 }, (_, i) => `${i + 1}.jpg`),
+        'my-heart': Array.from({ length: 11 }, (_, i) => `${i + 16}.jpg`),
+        'my-joy': Array.from({ length: 11 }, (_, i) => `${i + 31}.jpg`),
+        'my-wife': Array.from({ length: 12 }, (_, i) => `${i + 16}.jpg`),
       };
 
-      // Get the images for the current category
       const jpgImages = allImages[this.category] || [];
-
-      // Use a Set to filter out duplicate images
-      const uniqueImages = new Set();
-
-      // Populate the uniqueImages set
-      jpgImages.forEach((image) => {
-        uniqueImages.add(image);
-      });
-
-      // Convert the Set back to an array and map to image objects
-      this.images = Array.from(uniqueImages).map((image) => ({
+      this.images = jpgImages.map((image) => ({
         src: this.getImagePath(image),
       }));
     },
     getImagePath(image) {
-      // Construct the correct path to the images in the assets folder
       return new URL(`../assets/images/${image}`, import.meta.url).href;
     },
   },
@@ -65,10 +50,12 @@ export default {
 .gallery-page {
   background-color: black;
   color: white;
-  height: 100vh;
+  min-height: 100vh; /* Ensure it covers the full viewport height */
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px; /* Add padding for mobile */
+  overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
 .gallery {
@@ -79,8 +66,22 @@ export default {
 }
 
 .gallery-image {
-  width: 200px; /* Adjust size as needed */
+  width: 100%; /* Full width on mobile */
+  max-width: 200px; /* Limit max width */
   height: auto;
   margin: 10px;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .gallery-image {
+    width: 45%; /* Two images per row on tablets */
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-image {
+    width: 30%; /* Three images per row on desktops */
+  }
 }
 </style>
