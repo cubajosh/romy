@@ -18,7 +18,7 @@
         <p>7 It always protects, always trusts, always hopes, always perseveres.</p>
         <p>1 Corinthians 13:4-8</p>
         <br>
-        <p><b>YOU</b> are my love Romy, and you always will be.</p>
+        <p><b>YOU</b> are my love Romy, and you always will be, forever and always.</p>
         <p>Your boyfriend/husband,</p>
         <p>-Joshua</p>
       </div>
