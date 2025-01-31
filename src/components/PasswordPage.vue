@@ -44,6 +44,7 @@ export default {
   background-color: black;
   color: white;
   text-align: center;
+  padding: 10px; /* Add padding for mobile */
 }
 
 .instruction-text {

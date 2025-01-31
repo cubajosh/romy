@@ -1,37 +1,44 @@
 <template>
-    <nav class="navbar">
-      <router-link
-        v-for="category in categories"
-        :key="category"
-        :to="`/gallery/${category}`"
-      >
-        {{ category }}
-      </router-link>
-    </nav>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        categories: ['my-love', 'my-heart', 'my-joy', 'my-wife'],
-      };
-    },
-  };
-  </script>
-  
-  <style scoped>
+  <nav class="navbar">
+    <router-link
+      v-for="category in categories"
+      :key="category"
+      :to="`/gallery/${category}`"
+    >
+      {{ category }}
+    </router-link>
+  </nav>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      categories: ['my-love', 'my-heart', 'my-joy', 'my-wife'],
+    };
+  },
+};
+</script>
+
+<style scoped>
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding: 10px;
+}
+
+.navbar a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-family: 'Courier New', Courier, monospace; /* Typewriter font */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
   .navbar {
-    display: flex;
-    justify-content: center;
-    background-color: black;
-    padding: 10px;
+    flex-direction: column; /* Stack links vertically on small screens */
   }
-  
-  .navbar a {
-    color: white;
-    margin: 0 15px;
-    text-decoration: none;
-    font-family: 'Courier New', Courier, monospace; /* Typewriter font */
-  }
-  </style>
+}
+</style>
